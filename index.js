@@ -22,8 +22,8 @@ app.intent('airportinfo', {
     var reprompt = 'Tell me an airport code to get delay information.';
     if (_.isEmpty(airportCode)) {
       var prompt = 'I didn\'t hear an airport code. Tell me an airport code.';
-      res.say(prompt).reprompt(reprompt).shouldEndSession(false).send();
-      return false;
+      res.say(prompt).reprompt(reprompt).shouldEndSession(false);
+      return true;
     } else {
       var faaHelper = new FAADataHelper();
       faaHelper.requestAirportStatus(airportCode).then(function(airportStatus) {
